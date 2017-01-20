@@ -30,10 +30,13 @@ class DefaultController extends Controller
         $session = $this->get('session');
         $session->start();
 
+        $session->set('bar', 'baz');
+        $baz = $session->get('bar');
+
         error_log("SESSION: ". get_class($session));
         $counter = $session->get('foo', 0);
         $session->set('foo', $counter + 1);
 
-        return new Response("COUNTER: $counter");
+        return new Response("COUNTER: $counter, BAZ: $baz");
     }
 }
