@@ -1,5 +1,7 @@
 <?php
 
+$secrets = json_decode(file_get_contents($_SERVER['APP_SECRETS']), true);
+
 $container->setParameter('session_memcache_expire', getenv('SESSION_MEMCACHE_EXPIRE') ?: 86400);
 $container->setParameter('session_memcache_prefix', getenv('SESSION_MEMCACHE_PREFIX') ?: 'ez_');
 $container->setParameter('session_memcache_host_1', $secrets['MEMCACHE']['HOST1']);
