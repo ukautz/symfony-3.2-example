@@ -31,7 +31,7 @@ services:
             persistent_id: %session_memcache_prefix%
         calls:
             - [ addServer, [ %session_memcache_host_1%, %session_memcache_port_1% ]]
-            - [ addServer, [ %session_memcache_host_2%, %session_memcache_port_2% ]]
+            #- [ addServer, [ %session_memcache_host_2%, %session_memcache_port_2% ]]
 
     session.handler.memcached:
         class:     Symfony\Component\HttpFoundation\Session\Storage\Handler\MemcachedSessionHandler
