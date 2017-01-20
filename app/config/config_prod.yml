@@ -28,13 +28,13 @@ services:
     session.memcached:
         class: Memcached
         arguments:
-            persistent_id: %session_memcache_prefix%
+            persistent_id: "%session_memcache_prefix%"
         calls:
-            - [ addServer, [ %session_memcache_host_1%, %session_memcache_port_1% ]]
+            - [ addServer, [ "%session_memcache_host_1%", "%session_memcache_port_1%" ]]
             #- [ addServer, [ %session_memcache_host_2%, %session_memcache_port_2% ]]
 
     session.handler.memcached:
         class:     Symfony\Component\HttpFoundation\Session\Storage\Handler\MemcachedSessionHandler
-        arguments: ['@session.memcached', { prefix: %session_memcache_prefix%, expiretime: %session_memcache_expire% }]
+        arguments: ['@session.memcached', { prefix: "%session_memcache_prefix%", expiretime: "%session_memcache_expire%" }]
 
 
