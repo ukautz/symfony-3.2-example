@@ -28,9 +28,11 @@ class DefaultController extends Controller
     {
         /** @var Session $session */
         $session = $this->get('session');
+        $session->start();
+
         error_log("SESSION: ". get_class($session));
         $counter = $session->get('foo', 0);
-        $this->get('session')->set('foo', $counter + 1);
+        $session->set('foo', $counter + 1);
 
         return new Response("COUNTER: $counter");
     }
